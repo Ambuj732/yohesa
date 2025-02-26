@@ -1,0 +1,5 @@
+const PUBLIC_REST_API_ENDPOINT = String(
+  import.meta.env.VITE_PUBLIC_REST_API_ENDPOINT
+);
+const BEARER_TOKEN = String(import.meta.env.VITE_BEARER_TOKEN);
+export { PUBLIC_REST_API_ENDPOINT, BEARER_TOKEN };
