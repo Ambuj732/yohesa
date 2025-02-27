@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 import "../bower_components/font-awesome/css/font-awesome.min.css";
 import profileImage from "../dist/img/user4-128x128.jpg";
-import User from "../../../../backend/models/signupModels";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import editProfile from "../../actions/admin/editProfile";
