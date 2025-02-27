@@ -47,7 +47,7 @@ const RoleList = () => {
             <div className="box">
               <div className="box-body">
                 <table
-                  // id="example1"
+                  id="example1"
                   className="table table-bordered table-striped"
                 >
                   <thead>
