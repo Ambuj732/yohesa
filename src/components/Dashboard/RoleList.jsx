@@ -21,19 +21,19 @@ const RoleList = () => {
     getRolesHandler();
   }, []);
 
-  useEffect(() => {
-    const table = $("#example1").DataTable({
-      paging: true,
-      searching: true,
-      ordering: true,
-      info: true,
-      autoWidth: false,
-    });
+  // useEffect(() => {
+  //   const table = $("#example1").DataTable({
+  //     paging: true,
+  //     searching: true,
+  //     ordering: true,
+  //     info: true,
+  //     autoWidth: false,
+  //   });
 
-    return () => {
-      table.destroy();
-    };
-  }, []);
+  //   return () => {
+  //     table.destroy();
+  //   };
+  // }, []);
 
   return (
     <div className="content-wrapper">
