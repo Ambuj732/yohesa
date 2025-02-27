@@ -52,12 +52,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<LoginPage />}></Route>
-      <Route path="/admin/signup" element={<SignUp />}></Route>
+      <Route path="/admin/signup" element={<SignUp />}></Route>``
       <Route path="/dashboard" element={<SidebarHome />}>
         <Route path="/dashboard" element={<AdminDashboard />}></Route>
         <Route path="/dashboard/AccordionRole" element={<Accordion />}></Route>
-        <Route path="/dashboard/add_role" element={<AddRole />}></Route>
-        <Route path="/dashboard/Role_List" element={<RoleList />}></Route>
+        <Route path="/dashboard/addRole" element={<AddRole />}></Route>
+        <Route path="/dashboard/roleList" element={<RoleList />}></Route>
         <Route path="/dashboard/UserProfile" element={<Profile />}></Route>
         <Route path="/dashboard/Employee" element={<AddEmployee />}></Route>
         {/* <Route path="/dashboard/about" element={<Abouts />}></Route> */}
