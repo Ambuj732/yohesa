@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 import "../bower_components/font-awesome/css/font-awesome.min.css";
 import { useForm } from "react-hook-form";
@@ -81,7 +81,7 @@ const AddRole = () => {
                       />
                       {errors?.create_role && (
                         <p className="" style={{ color: "red" }}>
-                          Check create role filed
+                          Check create role field
                         </p>
                       )}
                     </div>
