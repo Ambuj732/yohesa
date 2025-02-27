@@ -1,7 +1,8 @@
 {
         "routes": [
           {
-            "src": "src/component/dist/*",
+            "src": "/src/component/dist/(.*)",
+            "dest": "/src/component/dist/$1",
             "headers": {
               "Cache-Control": "public, max-age=31536000, immutable"
             },
