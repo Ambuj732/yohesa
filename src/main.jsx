@@ -21,32 +21,32 @@ import EmployeeList from "./components/Dashboard/EmployeeList.jsx";
 import SidebarHome from "./Pages/SidebarHome.jsx";
 import AdminDashboard from "./components/Dashboard/AdminDashbord.jsx";
 import Accordion from "./components/Dashboard/Accordion.jsx";
-import TermConditoin from "./components/Dashboard/TermCandition.jsx";
-import Abouts from "./components/Dashboard/Abouts.jsx";
-import Settings from "./components/Dashboard/Settings.jsx";
-import UploadDump from "./components/Dashboard/Uploaddump.jsx";
-import AddCategory from "./components/Dashboard/AddCategory.jsx";
-import CategoryList from "./components/Dashboard/CategoryList.jsx";
-import AddSubCategory from "./components/Dashboard/AddSubCategory.jsx";
-import SubCategoryList from "./components/Dashboard/SubCategoryList.jsx";
-import AddProduct from "./components/Dashboard/AddProduct.jsx";
-import ProductList from "./components/Dashboard/ProductList.jsx";
-import Editor from "./components/TextEditor/Editor.jsx";
-import Faq from "./components/Dashboard/faq.jsx";
-import CategoryLoan from "./components/Dashboard/CategoryLoan.jsx";
-import CategoryLoanList from "./components/Dashboard/CategoryLoanList.jsx";
-import Enquiry from "./components/Dashboard/Enquiry.jsx";
+// import TermConditoin from "./components/Dashboard/TermCandition.jsx";
+// import Abouts from "./components/Dashboard/Abouts.jsx";
+// import Settings from "./components/Dashboard/Settings.jsx";
+// import UploadDump from "./components/Dashboard/Uploaddump.jsx";
+// import AddCategory from "./components/Dashboard/AddCategory.jsx";
+// import CategoryList from "./components/Dashboard/CategoryList.jsx";
+// import AddSubCategory from "./components/Dashboard/AddSubCategory.jsx";
+// import SubCategoryList from "./components/Dashboard/SubCategoryList.jsx";
+// import AddProduct from "./components/Dashboard/AddProduct.jsx";
+// import ProductList from "./components/Dashboard/ProductList.jsx";
+// import Editor from "./components/TextEditor/Editor.jsx";
+// import Faq from "./components/Dashboard/faq.jsx";
+// import CategoryLoan from "./components/Dashboard/CategoryLoan.jsx";
+// import CategoryLoanList from "./components/Dashboard/CategoryLoanList.jsx";
+// import Enquiry from "./components/Dashboard/Enquiry.jsx";
 import SeniorManager from "./components/RoleManager/SeniorManager.jsx";
-import Manager from "./components/RoleManager/Manager.jsx";
-import TeamLeader from "./components/RoleManager/TeamLeader.jsx";
-import TeleCaller from "./components/RoleManager/Telecaller.jsx";
-import ApplyList from "./components/RoleManager/ApplyList.jsx";
-import IciciBank from "./components/CreditCardForm/IciciBank.jsx";
-import SbiBank from "./components/CreditCardForm/SbiBank.jsx";
-import AmericanExpress from "./components/CreditCardForm/AmericanExpress.jsx";
-import StandarBank from "./components/CreditCardForm/StandardBank.jsx";
-import YesBank from "./components/CreditCardForm/YesBank.jsx";
-import KotakMahindra from "./components/CreditCardForm/KotakMahindra.jsx";
+// import Manager from "./components/RoleManager/Manager.jsx";
+// import TeamLeader from "./components/RoleManager/TeamLeader.jsx";
+// import TeleCaller from "./components/RoleManager/Telecaller.jsx";
+// import ApplyList from "./components/RoleManager/ApplyList.jsx";
+// import IciciBank from "./components/CreditCardForm/IciciBank.jsx";
+// import SbiBank from "./components/CreditCardForm/SbiBank.jsx";
+// import AmericanExpress from "./components/CreditCardForm/AmericanExpress.jsx";
+// import StandarBank from "./components/CreditCardForm/StandardBank.jsx";
+// import YesBank from "./components/CreditCardForm/YesBank.jsx";
+// import KotakMahindra from "./components/CreditCardForm/KotakMahindra.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -60,8 +60,8 @@ const router = createBrowserRouter(
         <Route path="/dashboard/Role_List" element={<RoleList />}></Route>
         <Route path="/dashboard/UserProfile" element={<Profile />}></Route>
         <Route path="/dashboard/Employee" element={<AddEmployee />}></Route>
-        <Route path="/dashboard/about" element={<Abouts />}></Route>
-        <Route path="/dashboard/setting" element={<Settings />}></Route>
+        {/* <Route path="/dashboard/about" element={<Abouts />}></Route> */}
+        {/* <Route path="/dashboard/setting" element={<Settings />}></Route>
         <Route path="/dashboard/uploaddump" element={<UploadDump />}></Route>
         <Route path="/dashboard/addcategory" element={<AddCategory />}></Route>
         <Route path="/dashboard/addproduct" element={<AddProduct />}></Route>
@@ -76,52 +76,52 @@ const router = createBrowserRouter(
         <Route path="/dashboard/icicibank" element={<IciciBank />}></Route>
         <Route path="/dashboard/sbibank" element={<SbiBank />}></Route>
         <Route path="/dashboard/standardbank" element={<StandarBank />}></Route>
-        <Route path="/dashboard/yesbank" element={<YesBank />}></Route>
-        <Route
+        <Route path="/dashboard/yesbank" element={<YesBank />}></Route> */}
+        {/* <Route
           path="/dashboard/kotakmahindra"
           element={<KotakMahindra />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/americanexpress"
           element={<AmericanExpress />}
-        ></Route>
+        ></Route> */}
         <Route
           path="/dashboard/seniormanager"
           element={<SeniorManager />}
         ></Route>
-        <Route
+        {/* <Route
           path="/dashboard/categoryloan"
           element={<CategoryLoan />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/categoryloanlist"
           element={<CategoryLoanList />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/addsubcategory"
           element={<AddSubCategory />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/subcategorylist"
           element={<SubCategoryList />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/categorylist"
           element={<CategoryList />}
-        ></Route>
-        <Route
+        ></Route> */}
+        {/* <Route
           path="/dashboard/Term&Condition"
           element={<TermConditoin />}
-        ></Route>
+        ></Route> */}
 
         <Route
           path="/dashboard/ListEmployee"
           element={<EmployeeList />}
         ></Route>
-        <Route
+        {/* <Route
           path="/dashboard/Application"
           element={<ImportApplication />}
-        ></Route>
+        ></Route> */}
       </Route>
     </Route>
   )
