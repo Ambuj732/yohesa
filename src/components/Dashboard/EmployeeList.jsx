@@ -69,7 +69,7 @@ const EmployeeList = () => {
         <div className="row">
           <div className="col-xs-12">
             <div className="box">
-              <div className="box-body">
+              <div className="box-body table-responsive">
                 <table
                   id="example1"
                   className="table table-bordered table-striped table-responsive"
@@ -108,7 +108,7 @@ const EmployeeList = () => {
                               style={{ width: "50px", height: "50px" }}
                             />
                           </td>
-                          <td>{data.assignRole}</td>
+                          <td>{data.role}</td>
                           <td>
                             <a href="#">
                               <i
