@@ -28,11 +28,11 @@ const Sidebar = () => {
   };
   const goAddRolePage = () => {
     console.log("Hii");
-    navigate("/dashboard/add_role");
+    navigate("/dashboard/addRole");
   };
 
   const goRoleList = () => {
-    navigate("/dashboard/Role_List");
+    navigate("/dashboard/roleList");
   };
 
   const goAddApplication = () => {

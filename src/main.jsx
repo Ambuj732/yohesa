@@ -55,11 +55,11 @@ const router = createBrowserRouter(
       <Route path="/admin/signup" element={<SignUp />}></Route>
       <Route path="/dashboard" element={<SidebarHome />}>
         <Route path="/dashboard" element={<AdminDashboard />}></Route>
-        <Route path="/AccordionRole" element={<Accordion />}></Route>
-        <Route path="/addRole" element={<AddRole />}></Route>
-        <Route path="/roleList" element={<RoleList />}></Route>
-        <Route path="/userProfile" element={<Profile />}></Route>
-        <Route path="/addEmployee" element={<AddEmployee />}></Route>
+        <Route path="/dashboard/AccordionRole" element={<Accordion />}></Route>
+        <Route path="/dashboard/addRole" element={<AddRole />}></Route>
+        <Route path="/dashboard/roleList" element={<RoleList />}></Route>
+        <Route path="/dashboard/UserProfile" element={<Profile />}></Route>
+        <Route path="/dashboard/Employee" element={<AddEmployee />}></Route>
         {/* <Route path="/dashboard/about" element={<Abouts />}></Route> */}
         {/* <Route path="/dashboard/setting" element={<Settings />}></Route>
         <Route path="/dashboard/uploaddump" element={<UploadDump />}></Route>
@@ -85,7 +85,10 @@ const router = createBrowserRouter(
           path="/dashboard/americanexpress"
           element={<AmericanExpress />}
         ></Route> */}
-        <Route path="/seniormanager" element={<SeniorManager />}></Route>
+        <Route
+          path="/dashboard/seniormanager"
+          element={<SeniorManager />}
+        ></Route>
         {/* <Route
           path="/dashboard/categoryloan"
           element={<CategoryLoan />}
@@ -111,7 +114,10 @@ const router = createBrowserRouter(
           element={<TermConditoin />}
         ></Route> */}
 
-        <Route path="/listEmployee" element={<EmployeeList />}></Route>
+        <Route
+          path="/dashboard/ListEmployee"
+          element={<EmployeeList />}
+        ></Route>
         {/* <Route
           path="/dashboard/Application"
           element={<ImportApplication />}
