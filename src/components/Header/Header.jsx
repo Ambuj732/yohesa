@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../dist/img/logo.png";
+import $ from "jquery";
 import "../dist/css/AdminLTE.css";
 import "./Header.css";
 import "../bower_components/Ionicons/css/ionicons.min.css";

@@ -4,7 +4,6 @@ import "../bower_components/font-awesome/css/font-awesome.min.css";
 import "../dist/css/AdminLTE.min.css";
 import "../dist/css/skins/_all-skins.min.css";
 import "../bower_components/morris.js/morris.css";
-import "../bower_components/jvectormap/jquery-jvectormap.css";
 import "../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css";
 import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 import "../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css";
