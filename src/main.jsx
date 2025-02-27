@@ -22,7 +22,6 @@ import SidebarHome from "./Pages/SidebarHome.jsx";
 import AdminDashboard from "./components/Dashboard/AdminDashbord.jsx";
 import Accordion from "./components/Dashboard/Accordion.jsx";
 import TermConditoin from "./components/Dashboard/TermCandition.jsx";
-import PrivacyPolicy from "./components/Dashboard/Privacypolicy.jsx";
 import Abouts from "./components/Dashboard/Abouts.jsx";
 import Settings from "./components/Dashboard/Settings.jsx";
 import UploadDump from "./components/Dashboard/Uploaddump.jsx";
@@ -61,7 +60,6 @@ const router = createBrowserRouter(
         <Route path="/dashboard/Role_List" element={<RoleList />}></Route>
         <Route path="/dashboard/UserProfile" element={<Profile />}></Route>
         <Route path="/dashboard/Employee" element={<AddEmployee />}></Route>
-        <Route path="/dashboard/policy" element={<PrivacyPolicy />}></Route>
         <Route path="/dashboard/about" element={<Abouts />}></Route>
         <Route path="/dashboard/setting" element={<Settings />}></Route>
         <Route path="/dashboard/uploaddump" element={<UploadDump />}></Route>
