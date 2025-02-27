@@ -1,7 +1,7 @@
+import React from "react";
 import Sidebar from "./components/Dashboard/Sidebar.jsx";
 import Header from "./components/Header/Header.jsx";
 import AdminDashbord from "./components/Dashboard/AdminDashbord.jsx";
-import LoginPage from "./components/loginscreen/loginPage.jsx";
 import { Outlet } from "react-router-dom";
 
 function App() {
