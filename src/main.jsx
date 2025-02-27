@@ -11,9 +11,8 @@ import {
 } from "react-router-dom";
 import AddRole from "./components/Dashboard/AddRole.jsx";
 import Sidebar from "./components/Dashboard/Sidebar.jsx";
-// import LoginPage from "./components/Loginscreen/LoginPage.jsx";
-import LoginPage from "./components/loginscreen/loginPage.jsx";
 import SignUp from "./components/Loginscreen/SignUp.jsx";
+import LoginPage from "./components/Loginscreen/LoginPage.jsx";
 import Profile from "./components/Dashboard/Profile.jsx";
 import RoleList from "./components/Dashboard/RoleList.jsx";
 import ImportApplication from "./components/Dashboard/ImportApplication.jsx";
