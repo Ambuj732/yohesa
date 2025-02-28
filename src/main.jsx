@@ -37,6 +37,7 @@ import Accordion from "./components/Dashboard/Accordion.jsx";
 // import CategoryLoanList from "./components/Dashboard/CategoryLoanList.jsx";
 // import Enquiry from "./components/Dashboard/Enquiry.jsx";
 import SeniorManager from "./components/RoleManager/SeniorManager.jsx";
+import AdminLoginPage from "./components/Loginscreen/AdminLoginPage.jsx";
 // import Manager from "./components/RoleManager/Manager.jsx";
 // import TeamLeader from "./components/RoleManager/TeamLeader.jsx";
 // import TeleCaller from "./components/RoleManager/Telecaller.jsx";
@@ -52,6 +53,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<LoginPage />}></Route>
+      <Route path="/admin/login" element={<AdminLoginPage />}></Route>
       <Route path="/admin/signup" element={<SignUp />}></Route>
       <Route path="/dashboard" element={<SidebarHome />}>
         <Route path="/dashboard" element={<AdminDashboard />}></Route>
@@ -118,10 +120,10 @@ const router = createBrowserRouter(
           path="/dashboard/ListEmployee"
           element={<EmployeeList />}
         ></Route>
-        {/* <Route
+        <Route
           path="/dashboard/Application"
           element={<ImportApplication />}
-        ></Route> */}
+        ></Route>
       </Route>
     </Route>
   )

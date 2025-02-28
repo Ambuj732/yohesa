@@ -6,6 +6,7 @@ import getAdminStaff from "../../actions/admin/getAdminStaff";
 import { ToastContainer, toast } from "react-toastify";
 import Footer from "../Footer/Footer";
 import getSeniorTeam from "../../actions/seniorManagerTeamLogin/getSeniorTeam";
+import deleteStaff from "../../actions/admin/deleteStaff";
 const EmployeeList = () => {
   const [adminStaff, setAdminStaff] = useState([]);
 
@@ -38,6 +39,19 @@ const EmployeeList = () => {
         }
       }
     } catch (error) {}
+  };
+
+  const deleteStaffs = async (id) => {
+    try {
+      console.log("staffId::", id);
+      const response = await deleteStaff(id);
+      if (response?.data?.code) {
+        toast.success("Staff deleted Successfully");
+        await getAdminStaffFunction();
+      }
+    } catch (error) {
+      console.log("Error while deleting Staff", error);
+    }
   };
 
   useEffect(() => {
@@ -108,7 +122,7 @@ const EmployeeList = () => {
                               style={{ width: "50px", height: "50px" }}
                             />
                           </td>
-                          <td>{data.role}</td>
+                          <td>{data?.role}</td>
                           <td>
                             <a href="#">
                               <i
@@ -117,7 +131,10 @@ const EmployeeList = () => {
                               ></i>
                             </a>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#">
+                            <a
+                              href="#"
+                              onClick={() => deleteStaffs(data?.staffId)}
+                            >
                               <i
                                 className="fa fa-trash"
                                 style={{ fontSize: "20px", color: "red" }}

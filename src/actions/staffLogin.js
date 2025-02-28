@@ -1,9 +1,6 @@
 import axios from "axios";
-import {
-  PUBLIC_REST_API_ENDPOINT,
-  BEARER_TOKEN,
-} from "../../../../constant.js";
-const login = async (data) => {
+import { PUBLIC_REST_API_ENDPOINT, BEARER_TOKEN } from "../../constant.js";
+const staffLogin = async (data) => {
   try {
     const queryString = Object.keys(data)
       .map(
@@ -11,13 +8,13 @@ const login = async (data) => {
       )
       .join("&");
     const response = await axios.post(
-      `${PUBLIC_REST_API_ENDPOINT}/api/admin/login`,
+      `${PUBLIC_REST_API_ENDPOINT}/api/staffLogin`,
       data
     );
-    console.log("Login response :: ", response);
+    console.log("staffLogin response :: ", response);
     return response;
   } catch (error) {
-    console.log("Error while login", error);
+    console.log("Error while staffLogin", error);
   }
 };
-export default login;
+export default staffLogin;

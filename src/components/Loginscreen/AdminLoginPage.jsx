@@ -8,10 +8,9 @@ import finance from "../dist/img/finance.jpg";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import login from "../../actions/LoginScreen/adminTeamLogin/login.js";
-import staffLogin from "../../actions/staffLogin.js";
 import { ToastContainer, toast } from "react-toastify";
 
-const LoginPage = () => {
+const AdminLoginPage = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -34,7 +33,7 @@ const LoginPage = () => {
         password: formData?.password,
       };
       console.log(data);
-      const response = await staffLogin(data);
+      const response = await login(data);
       console.log(response);
       if (response?.data?.code === 1000) {
         localStorage.setItem("token", JSON.stringify(response?.data?.token));
@@ -84,7 +83,7 @@ const LoginPage = () => {
             style={{ borderRadius: "10px", background: "#14657d" }}
           >
             <p className="login-box-msg" style={{ color: "#fff" }}>
-              Sign in to start your session
+              Admin Login
             </p>
             <form onSubmit={handleSubmit(loginHandler)}>
               <div className="form-group has-feedback">
@@ -150,4 +149,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default AdminLoginPage;

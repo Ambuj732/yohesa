@@ -36,6 +36,7 @@ import Footer from "../Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import logout from "../../actions/admin/logout.js";
 import { ToastContainer, toast } from "react-toastify";
+import staffLogout from "../../actions/staffLogout.js";
 
 export default function Header() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -52,14 +53,27 @@ export default function Header() {
 
   const handleLogout = async () => {
     try {
-      const response = await logout();
-      if (response?.data?.code === 1000) {
-        localStorage.removeItem("profileDetails");
-        localStorage.removeItem("token");
-        toast.success("Successfully logout");
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+      const profileDetails = JSON.parse(localStorage.getItem("profileDetails"));
+      if (profileDetails.role === "admin") {
+        const response = await logout();
+        if (response?.data?.code === 1000) {
+          localStorage.removeItem("profileDetails");
+          localStorage.removeItem("token");
+          toast.success("Successfully logout");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }
+      } else {
+        const response = await staffLogout();
+        if (response?.data?.code === 1000) {
+          localStorage.removeItem("profileDetails");
+          localStorage.removeItem("token");
+          toast.success("Successfully logout");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }
       }
     } catch (error) {
       console.log("Error while logout", error);
