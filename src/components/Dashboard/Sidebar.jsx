@@ -126,6 +126,7 @@ const Sidebar = () => {
 
   const profileDetails = JSON.parse(localStorage.getItem("profileDetails"));
   const role = profileDetails.role;
+  const name = profileDetails.firstName + " " + profileDetails.lastName;
 
   const capitalizeWords = (role) => {
     return role
@@ -151,7 +152,7 @@ const Sidebar = () => {
                 <img src={userImage} className="img-circle" alt="User" />
               </div>
               <div className="pull-left info" style={{ color: "white" }}>
-                <p> {capitalizeWords(role)}</p>
+                <p> {capitalizeWords(name)}</p>
                 <a href="#">
                   <i className="fa fa-circle text-success"></i>{" "}
                   <span style={{ color: "white", font: "10px" }}>Online</span>

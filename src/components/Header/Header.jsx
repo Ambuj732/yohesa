@@ -81,7 +81,7 @@ export default function Header() {
   };
 
   const userProfile = JSON.parse(localStorage.getItem("profileDetails"));
-  const role = userProfile.role;
+  const name = userProfile.firstName + " " + userProfile.lastName;
 
   const capitalizeWords = (role) => {
     return role
@@ -135,7 +135,7 @@ export default function Header() {
                     data-toggle="dropdown"
                   >
                     <span className="" style={{ color: "white" }}>
-                      {capitalizeWords(role)}
+                      {capitalizeWords(name)}
                     </span>
                   </a>
                   <ul className="dropdown-menu">
