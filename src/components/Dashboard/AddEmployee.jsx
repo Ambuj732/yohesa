@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateEmployee } from "../../redux/employeeSlice";
 import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 import "../bower_components/font-awesome/css/font-awesome.min.css";
 import getRoles from "../../actions/getRoles";
@@ -6,15 +8,55 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import addTeam from "../../actions/admin/addTeam";
 import addSeniorTeam from "../../actions/seniorManagerTeamLogin/addSeniorTeam";
+import editAdminStaff from "../../actions/admin/editAdminStaff";
 
 const AddEmployee = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    resetField,
     formState: { errors },
   } = useForm();
   const [role, setRoles] = useState([]);
   const [assignRole, setAssignRole] = useState("");
+  const dispatch = useDispatch();
+  const selectedEmployee = useSelector(
+    (state) => state.employee.selectedEmployee
+  );
+  console.log("Selected Employee:::", selectedEmployee); // selected  Employee aa rahe hain.
+
+  // Populate Fields for Editing
+  useEffect(() => {
+    if (selectedEmployee) {
+      setValue("firstName", selectedEmployee.firstName);
+      setValue("lastName", selectedEmployee.lastName);
+      setValue("userId", selectedEmployee.userId);
+      setValue("phoneNumber", selectedEmployee.mobile);
+      setValue("email", selectedEmployee.email);
+      setValue("dob", selectedEmployee.dob);
+      setValue("doj", selectedEmployee.doj);
+      setValue("gender", selectedEmployee.gender);
+      setValue("password", selectedEmployee.password);
+      setValue("confirmPassword", selectedEmployee.confirmPassword);
+      setAssignRole(selectedEmployee.role);
+    }
+  }, [selectedEmployee, setValue]);
+
+  const resetForm = () => {
+    setFormData({
+      firstName: "",
+      lastName: "",
+      userId: "",
+      phoneNumber: "",
+      email: "",
+      dob: "",
+      doj: "",
+      gender: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
 
   const addTeamHandler = async (formData) => {
     try {
@@ -33,25 +75,41 @@ const AddEmployee = () => {
         confirmPassword: formData?.confirmPassword,
         role: assignRole,
       };
-      if (userProfile?.role === "admin") {
-        const response = await addTeam(data);
-        console.log(response);
+      let response;
+      if (selectedEmployee) {
+        response = await dispatch(
+          editAdminStaff(data, selectedEmployee.staffId)
+        );
         if (response?.data?.code === 1000) {
-          toast.success("TeamMember is created Successfully");
-          toast.success(response?.data?.email);
-        } else if (response?.data?.code === 1001) {
-          toast.error("Admin Team member did not create");
-          toast.error(response?.data?.error);
+          resetForm();
+          toast.success("Admin Team Memeber Edit Successfully");
         }
-      } else if (userProfile?.role === "senior manager") {
-        const response = await addSeniorTeam(data);
-        console.log(response);
-        if (response?.data?.code === 1000) {
-          toast.success("TeamMember is created Successfully");
-          toast.success(response?.data?.email);
-        } else if (response?.data?.status === 1001) {
-          toast.error("Senior  Team member did not create");
-          toast.error(response?.data?.error);
+        if (response?.data?.code === 1001) {
+          toast.success("Password and Confirm Password do not match");
+        }
+      } else {
+        if (userProfile?.role === "admin") {
+          const response = await addTeam(data);
+          console.log(response);
+          if (response?.data?.code === 1000) {
+            toast.success("TeamMember is created Successfully");
+            resetForm();
+            toast.success(response?.data?.email);
+          } else if (response?.data?.code === 1001) {
+            toast.error("Admin Team member did not create");
+            toast.error(response?.data?.error);
+          }
+        } else if (userProfile?.role === "senior manager") {
+          const response = await addSeniorTeam(data);
+          console.log(response);
+          if (response?.data?.code === 1000) {
+            resetForm();
+            toast.success("TeamMember is created Successfully");
+            toast.success(response?.data?.email);
+          } else if (response?.data?.status === 1001) {
+            toast.error("Senior  Team member did not create");
+            toast.error(response?.data?.error);
+          }
         }
       }
     } catch (error) {
@@ -59,29 +117,29 @@ const AddEmployee = () => {
     }
   };
 
-  const getRolesHandler = async () => {
-    const userProfile = JSON.parse(localStorage.getItem("profileDetails"));
-    const response = await getRoles();
-    console.log(response);
-    if (response?.data?.code === 1000) {
-      setRoles(response?.data?.roles);
-    }
-  };
+  // Load Roles
+  useEffect(() => {
+    const fetchRoles = async () => {
+      const response = await getRoles();
+      if (response?.data?.code === 1000) {
+        setRoles(response.data.roles);
+      } else {
+        toast.error("Failed to fetch roles.");
+      }
+    };
+    fetchRoles();
+  }, []);
 
   const handleChange = (e) => {
     setAssignRole(e.target.value);
   };
-
-  useEffect(() => {
-    getRolesHandler();
-  }, []);
 
   const userProfile = JSON.parse(localStorage.getItem("profileDetails"));
 
   return (
     <div className="content-wrapper">
       <section className="content-header">
-        <h1>Add Employee</h1>
+        <h1>{selectedEmployee ? "Edit Employee" : "Add Employee"}</h1>
       </section>
 
       <section className="content">
@@ -106,7 +164,7 @@ const AddEmployee = () => {
                     borderRadius: "15px",
                   }}
                 >
-                  Add Employee
+                  {selectedEmployee ? "Edit Employee" : "Add Employee"}
                 </h4>
                 <form onSubmit={handleSubmit(addTeamHandler)}>
                   <div className="col-md-6">
@@ -154,7 +212,7 @@ const AddEmployee = () => {
                         type="text"
                         className="form-control"
                         name="name"
-                        placeholder="Staff Id"
+                        placeholder="user Id"
                         {...register("userId", { required: true })}
                         style={{
                           border: "2px solid #14657d",
@@ -365,7 +423,8 @@ const AddEmployee = () => {
                         fontWeight: 700,
                       }}
                     >
-                      Submit <i className="fa fa-send-o"></i>
+                      {selectedEmployee ? "Update Employee" : "Add Employee"}
+                      {/* Submit <i className="fa fa-send-o"></i> */}
                     </button>
                   </div>
                 </form>
@@ -373,8 +432,8 @@ const AddEmployee = () => {
             </div>
           </div>
         </div>
+        <ToastContainer />
       </section>
-      <ToastContainer />
     </div>
   );
 };

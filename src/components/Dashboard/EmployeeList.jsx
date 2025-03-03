@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux"; // for store
+import { selectEmployee, setEmployees } from "../../redux/employeeSlice"; // for slice
 import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
 import "../bower_components/font-awesome/css/font-awesome.min.css";
 import "../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css";
@@ -7,8 +9,19 @@ import { ToastContainer, toast } from "react-toastify";
 import Footer from "../Footer/Footer";
 import getSeniorTeam from "../../actions/seniorManagerTeamLogin/getSeniorTeam";
 import deleteStaff from "../../actions/admin/deleteStaff";
+import { useNavigate } from "react-router-dom";
+
 const EmployeeList = () => {
   const [adminStaff, setAdminStaff] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const employees = useSelector((state) => state.employee.employees); // store se value le liya
+  console.log("Employees::", employees); // All empoloyee hai
+  const selectedEmployee = useSelector(
+    (state) => state.employee.selectedEmployee
+  ); // selected employee store se le liya
+
+  console.log("Employee List Selected Employee::", selectedEmployee); // null hai isme
 
   // hit admin and senior api according to role..
   const getAdminStaffFunction = async () => {
@@ -19,6 +32,7 @@ const EmployeeList = () => {
       if (userProfileData.role === "admin") {
         const response = await getAdminStaff();
         if (response?.data?.code === 1000) {
+          dispatch(setEmployees(response?.data?.staffs));
           setAdminStaff(response?.data?.staffs);
           toast.success("Admin Staff fetched Successfully");
         } else if (response?.data?.code === 1001) {
@@ -29,6 +43,7 @@ const EmployeeList = () => {
       if (userProfileData.role === "senior manager") {
         const response = await getSeniorTeam();
         if (response?.data?.code === 1000) {
+          dispatch(setEmployees(response?.data?.staffs));
           setAdminStaff(response?.data?.staffs);
           toast.success("Senior Manger Staff fetched Successfully");
         } else if (response?.data?.code === 1001) {
@@ -54,9 +69,15 @@ const EmployeeList = () => {
     }
   };
 
+  const handleEdit = (employee) => {
+    console.log("Employee list me Data:::", employee);
+    dispatch(selectEmployee(employee)); // Select the employee
+    navigate("/dashboard/Employee"); // Navigate to edit page
+  };
+
   useEffect(() => {
     getAdminStaffFunction();
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
   //   const table = $("#example1").DataTable({
@@ -124,7 +145,7 @@ const EmployeeList = () => {
                           </td>
                           <td>{data?.role}</td>
                           <td>
-                            <a href="#">
+                            <a href="#" onClick={() => handleEdit(data)}>
                               <i
                                 className="fa fa-pencil-square-o"
                                 style={{ fontSize: "20px", color: "#5dbcc8" }}
@@ -150,6 +171,7 @@ const EmployeeList = () => {
           </div>
         </div>
       </section>
+      <ToastContainer />
     </div>
   );
 };
